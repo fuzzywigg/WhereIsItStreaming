@@ -188,3 +188,26 @@ Some of the features that would be appropriate for Where Is It Streaming. Please
 ## License :books:
 
 Where Is It Streaming is an open source project under MIT license.
+
+---
+
+## Quick Start
+
+```bash
+# Clone the repository
+git clone https://github.com/fuzzywigg/WhereIsItStreaming.git
+cd WhereIsItStreaming
+
+# See Installation section for setup steps
+```
+
+## Installation
+
+<!-- TODO: Add installation steps -->
+> ⚠️ Installation steps not yet documented.
+
+## License
+
+<!-- TODO: Confirm and add license -->
+> ⚠️ License not yet specified.
+
