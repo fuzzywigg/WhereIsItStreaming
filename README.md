@@ -1,5 +1,7 @@
 # :computer: Where Is It Streaming :movie_camera:
 
+> 2019 Luther CS330 student fork. Not a live product. MIT LICENSE is in the tree.
+
 Where Is It Streaming is the web app that your entertainment has been waiting for. This web app helps you in exploring a wide variety of movies and in finding streaming services, renters, and sellers of your favorite movies. In addition to that, Where Is It Streaming randomly generates twenty movies every time you visit – or refresh – the main page for the convenience of simplifying the struggles of finding a movie to watch :sunglasses:.
 
 ## Table of Content :blue_book:	
@@ -55,10 +57,10 @@ This web app is written in **Python 3** using **Flask** Web Framework. Frontend 
 
 ### Cloning and Virtual Environment
 
-* `git clone https://github.com/Ahmad-Magdy-Osman/WhereIsItStreaming.git`
+* `git clone https://github.com/fuzzywigg/WhereIsItStreaming.git`
 * `cd WhereIsItStreaming`
 * `python3 -m venv venv`
-* `source venv/bin/active`
+* `source venv/bin/activate`
 * `pip3 install -r requirements.txt`
 
 ### Generating Movies Database
@@ -188,26 +190,4 @@ Some of the features that would be appropriate for Where Is It Streaming. Please
 ## License :books:
 
 Where Is It Streaming is an open source project under MIT license.
-
----
-
-## Quick Start
-
-```bash
-# Clone the repository
-git clone https://github.com/fuzzywigg/WhereIsItStreaming.git
-cd WhereIsItStreaming
-
-# See Installation section for setup steps
-```
-
-## Installation
-
-<!-- TODO: Add installation steps -->
-> ⚠️ Installation steps not yet documented.
-
-## License
-
-<!-- TODO: Confirm and add license -->
-> ⚠️ License not yet specified.
 
