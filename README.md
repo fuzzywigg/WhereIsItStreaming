@@ -84,11 +84,9 @@ Programming Languages, Frameworks, Libraries, APIs, Databases, and Data Formats.
 * Python 3
   * Flask
     * Flask-WTF
-    * Flask-User
-    * Flask-Images
+    * Flask-Login
     * Flask-Bootstrap
-    * Flask-StormPath
-    * Flask-SqlAlchemy
+    * Flask-SQLAlchemy
   * APIs
     * [JustWatch](https://github.com/dawoudt/JustWatchAPI)
   * SQLite3
