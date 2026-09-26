@@ -1,0 +1,4 @@
+{
+  "name": "Where Is It Streaming",
+  "install": "sudo apt-get update -qq && sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq python3-venv && python3 -m venv venv && . venv/bin/activate && pip3 install -r requirements.txt"
+}
