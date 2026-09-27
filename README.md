@@ -77,6 +77,13 @@ This step is essential before running the web app.
 * Run the Web App using `python3 app.py`
 * Visit [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
 
+### Running unit tests
+
+* `pip3 install -r requirements-dev.txt`
+* `pytest -q`
+
+`query.py` reads the SQLite path from `MOVIES_DB_PATH` (default `movies.db`) or `query.set_db_path()` so tests can use a temp DB. `db.py` exposes small helpers (`format_genres`, cast/crew filters, `init_schema`) and only loads CSVs when run as `python3 db.py`.
+
 ## Tools :eyeglasses:
 
 Programming Languages, Frameworks, Libraries, APIs, Databases, and Data Formats.
