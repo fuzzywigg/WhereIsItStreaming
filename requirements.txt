@@ -28,7 +28,7 @@ records==0.5.2
 requests==2.21.0
 six==1.12.0
 SQLAlchemy==1.2.16
-tablib==0.12.1
+tablib==3.10.0
 unicodecsv==0.14.1
 urllib3==1.24.1
 visitor==0.1.3
