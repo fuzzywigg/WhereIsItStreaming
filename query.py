@@ -1,8 +1,27 @@
+import os
 import sqlite3
+
+# Default path matches historical hard-coded "movies.db".
+# Override for tests via MOVIES_DB_PATH or set_db_path().
+_DB_PATH = os.environ.get("MOVIES_DB_PATH", "movies.db")
+
+
+def set_db_path(path):
+    """Point query helpers at a different SQLite file (used by tests)."""
+    global _DB_PATH
+    _DB_PATH = path
+
+
+def get_db_path():
+    return _DB_PATH
+
+
+def _connect():
+    return sqlite3.connect(_DB_PATH)
 
 
 def returnFilm(title):
-    db = sqlite3.connect("movies.db")
+    db = _connect()
     curs = db.cursor()
     res = curs.execute(
         "SELECT * FROM movies WHERE title LIKE '{}%'".format(title))
@@ -24,7 +43,7 @@ def returnFilm(title):
 
 
 def returnOneFilm(movieid):
-    db = sqlite3.connect("movies.db")
+    db = _connect()
     curs = db.cursor()
     res = curs.execute(
         "SELECT * FROM movies WHERE id = %d" % (movieid))
@@ -46,7 +65,7 @@ def returnOneFilm(movieid):
 
 
 def returnCast(movieid):
-    db = sqlite3.connect("movies.db")
+    db = _connect()
     curs = db.cursor()
     res = curs.execute("""SELECT character, name, profile_path FROM movies INNER JOIN casts 
     ON movies.id = casts.id
@@ -63,7 +82,7 @@ def returnCast(movieid):
 
 
 def returnCrew(movieid):
-    db = sqlite3.connect("movies.db")
+    db = _connect()
     curs = db.cursor()
     res = curs.execute("""SELECT name, role FROM movies INNER JOIN crews 
     ON movies.id = crews.id
@@ -79,7 +98,7 @@ def returnCrew(movieid):
 
 
 def returnRatings(movieid):
-    db = sqlite3.connect("movies.db")
+    db = _connect()
     curs = db.cursor()
     res = curs.execute("""SELECT AVG(rating) FROM movies INNER JOIN ratings 
     ON movies.id = ratings.id
@@ -95,15 +114,16 @@ def returnRatings(movieid):
 
 
 def insert(userid, movieid, table):
-    db = sqlite3.connect("movies.db")
+    db = _connect()
     curs = db.cursor()
     curs.execute("""INSERT INTO %s(movieid, userid) VALUES(?,?)""" %
                  (table), (movieid, userid))
+    db.commit()
     db.close()
 
 
 def randomMovies():
-    db = sqlite3.connect("movies.db")
+    db = _connect()
     curs = db.cursor()
     res = curs.execute("""SELECT * FROM movies 
     WHERE id IN (SELECT id FROM movies ORDER BY RANDOM() LIMIT 50)""")
