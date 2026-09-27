@@ -82,7 +82,7 @@ This step is essential before running the web app.
 * `pip3 install -r requirements-dev.txt`
 * `pytest -q`
 
-`query.py` reads the SQLite path from `MOVIES_DB_PATH` (default `movies.db`) or `query.set_db_path()` so tests can use a temp DB. `db.py` exposes small helpers (`format_genres`, cast/crew filters, `init_schema`) and only loads CSVs when run as `python3 db.py`.
+`query.py` reads the SQLite path from `MOVIES_DB_PATH` (default `movies.db`) or `query.set_db_path()` so tests can use a temp DB. `db.py` exposes small helpers (`format_genres`, cast/crew filters, `init_schema`) and only loads CSVs when run as `python3 db.py`. `offers.py` holds pure JustWatch offer parsing and main-page title truncation (no network).
 
 ## Tools :eyeglasses:
 
