@@ -10,6 +10,7 @@ import sqlite3
 from justwatch import JustWatch
 import json
 import query
+from offers import apply_main_title_truncation, parse_streaming_offers
 
 
 app = Flask(__name__)
@@ -76,22 +77,7 @@ class SearchCriteria(FlaskForm):
 def streaming(title):
     just_watch = JustWatch(country='US')
     results = just_watch.search_for_item(query=title)
-
-    providers = {2:  "iTunes", 10:  "Youtube", 68:  "Microsoft",
-                 15:  "Hulu", 8:  "Netflix", 7:  "Vudu", 3:  "Google Play"}
-
-    dct = {"rent": [], "buy": []}
-    for item in results["items"][0]["offers"]:
-        try:
-            dct2 = {}
-            dct2["provider"] = providers[item["provider_id"]]
-            dct2["price"] = item["retail_price"]
-            dct2["url"] = item["urls"]["standard_web"]
-            dct[item["monetization_type"]].append(dct2)
-        except:
-            continue
-
-    return dct
+    return parse_streaming_offers(results)
 
 
 @app.route('/')
@@ -146,9 +132,7 @@ def main():
 
     if len(films) >= 20:
         print(len(films))
-        for item in films:
-            if len(item["title"]) > 15:
-                item["title"] = item["title"][:14] + "..."
+    apply_main_title_truncation(films)
     form = SearchCriteria()
     if form.validate_on_submit():
         search = str(form.search.data)
